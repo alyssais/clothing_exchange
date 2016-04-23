@@ -4,9 +4,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item
     if location = params[:sort].try(:[], :distance_from).presence
       @items = @items.near(location)
+    else
+      @items = @items.order(:created_at => :desc)
     end
   end
 
