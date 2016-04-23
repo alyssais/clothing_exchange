@@ -20,7 +20,6 @@ if navigator.geolocation?
         {results} = JSON.parse(@responseText)
         input = document.getElementById("sort_distance_from")
         input.value = results[0].formatted_address
-        debugger
         form.submit()
       req.open "GET", url
       req.send()
