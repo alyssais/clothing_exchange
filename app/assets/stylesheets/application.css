@@ -32,8 +32,11 @@
 /*
  * Global Header
  */
-.global-header li.post {
+.global-header li h2 {
 	margin-left: 1em;
+}
+.global-header li:first-child h2 {
+	margin-left: 0;
 }
 
 .global-header ul ul li::after {

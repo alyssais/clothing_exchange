@@ -14,6 +14,7 @@
 					<ul>
 						<li class="items"><%= link_to 'Items', items_path %></li>
 						<li class="locations"><%= link_to 'Locations', locations_path %></li>
+						
 					</ul>
 				</li>
 				<li class="post">
@@ -21,6 +22,17 @@
 					<ul>
 						<li class="new-item"><%= link_to 'New Item', new_item_path %></li>
 						<!-- li class="wanted">link_to 'Wanted', new_wanted_path </li -->
+					</ul>
+				</li>
+				<li class="user">
+					<h2>&#128100;</h2>
+					<ul>
+						<% if user_signed_in? %>
+							<li class="my-items"><%= link_to 'My Items', items_path(user_id: current_user.id) %></li>
+							<li class="sign-out"><%= link_to 'Sign-out', destroy_user_session_path, :method => :delete %></li>
+						<% else %>
+							<li class="sign-in"><%= link_to 'Sign-in', new_user_session_path %></li>	
+						<% end %>
 					</ul>
 				</li>
 			</ul>
