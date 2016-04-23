@@ -1,0 +1,11 @@
+class CreateItems < ActiveRecord::Migration
+  def change
+    create_table :items do |t|
+      t.text :title
+      t.text :description
+      t.text :email
+
+      t.timestamps null: false
+    end
+  end
+end
