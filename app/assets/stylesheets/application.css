@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+ * Global Header and Footer (common to both)
+ */
+.global-header ul, 
+.global-header li, 
+.global-header h2,
+.global-footer ul,
+.global-footer li,
+.global-footer h2 {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	font-size: 1em;
+}
+
+/*
+ * Global Header
+ */
+.global-header li.post {
+	margin-left: 1em;
+}
+
+.global-header ul ul li::after {
+	content: " | ";
+}
+
+
+/*
+ * Global Footer
+ */
+.global-footer {
+	margin-top: 1em;
+	text-align: left;
+}
+.global-footer h2 {
+	display: block;
+	position: absolute;
+	left: -5000px;
+	top: -5000px;
+}
+
+.global-header ul ul li:last-child:after {
+	content: "";
+}
