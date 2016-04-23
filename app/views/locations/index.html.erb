@@ -2,6 +2,6 @@
 
 <ul>
   <% @locations.each do |location| %>
-    <li><%= link_to location, location_path(location) %></li>
+    <li><%= link_to location, items_path(sort: { distance_from: location }) %></li>
   <% end %>
 </ul>
