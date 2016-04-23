@@ -27,8 +27,10 @@
 			</ul>
 		</div>
 	
-<div class="<%= params[:controller] %>">
+<div class="<%= controller_name %>">
+<div class="<%= action_name %>">
 <%= yield %>
+</div>
 </div>
 
 	<div class="global-footer">
