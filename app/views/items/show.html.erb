@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% if @item.closed %>
+<p>This item is closed.</p>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @item.title %>

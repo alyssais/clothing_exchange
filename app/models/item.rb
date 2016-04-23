@@ -5,6 +5,10 @@ class Item < ActiveRecord::Base
   belongs_to :user
   delegate :email, to: :user
 
+  def self.open
+    where(closed: false)
+  end
+
   def geocode
     return unless location_changed?
 

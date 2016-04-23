@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item
+    @items = Item.open
     if location = params[:sort].try(:[], :distance_from).presence
       @items = @items.near(location)
     else
@@ -63,6 +63,6 @@ class ItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def item_params
-    params.require(:item).permit(:title, :description, :location)
+    params.require(:item).permit(:title, :description, :location, :closed)
   end
 end

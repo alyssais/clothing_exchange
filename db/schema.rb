@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 20160423125639) do
   create_table "items", force: :cascade do |t|
     t.text     "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.text     "location"
     t.float    "latitude"
     t.float    "longitude"
     t.text     "city"
     t.integer  "user_id"
-    t.boolean  "closed"
+    t.boolean  "closed",      default: false, null: false
   end
 
   add_index "items", ["user_id"], name: "index_items_on_user_id", using: :btree

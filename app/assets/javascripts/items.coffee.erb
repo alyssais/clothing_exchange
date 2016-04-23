@@ -2,8 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-if navigator.geolocation?
+addGeolocationButton = do ->
+  return unless location.pathname == "/items"
+  return unless navigator.geolocation?
+  return if document.getElementById("geolocate-button")?
   button = document.createElement("button")
+  button.id = "geolocate-button"
   button.type = 'button'
   button.innerHTML = 'Search near me'
 
@@ -23,3 +27,5 @@ if navigator.geolocation?
         form.submit()
       req.open "GET", url
       req.send()
+
+document.addEventListener Turbolinks.EVENTS.LOAD, addGeolocationButton
