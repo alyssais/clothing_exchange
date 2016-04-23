@@ -1,0 +1,26 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+if navigator.geolocation?
+  button = document.createElement("button")
+  button.type = 'button'
+  button.innerHTML = 'Search near me'
+
+  form = document.getElementById("search-form")
+  form.appendChild button
+
+  button.addEventListener "click", (e) ->
+    navigator.geolocation.getCurrentPosition (pos) ->
+      url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+      url += "#{pos.coords.latitude},#{pos.coords.longitude}"
+
+      req = new XMLHttpRequest()
+      req.addEventListener "load", ->
+        {results} = JSON.parse(@responseText)
+        input = document.getElementById("sort_distance_from")
+        input.value = results[0].formatted_address
+        debugger
+        form.submit()
+      req.open "GET", url
+      req.send()
