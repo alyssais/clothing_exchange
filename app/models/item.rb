@@ -2,6 +2,9 @@ class Item < ActiveRecord::Base
   before_save :geocode
   geocoder_init(latitude: :latitude, :longitude => :longitude)
 
+  belongs_to :user
+  delegate :email, to: :user
+
   def geocode
     return unless location_changed?
 

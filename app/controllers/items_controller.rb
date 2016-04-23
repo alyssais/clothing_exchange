@@ -1,6 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-
   # GET /items
   # GET /items.json
   def index
@@ -15,20 +13,23 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
   end
 
   # GET /items/new
   def new
-    @item = Item.new
+    @item = current_user.items.new
   end
 
   # GET /items/1/edit
   def edit
+    @item = current_user.items.find(params[:id])
   end
 
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -37,11 +38,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    create_or_update Item.new
+    create_or_update current_user.items.new
   end
 
   def update
-    create_or_update Item.find(params[:id])
+    create_or_update current_user.items.find(params[:id])
   end
 
   private
@@ -58,11 +59,6 @@ class ItemsController < ApplicationController
         format.json { render json: item.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_item
-    @item = Item.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
