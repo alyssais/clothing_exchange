@@ -7,10 +7,6 @@
 </head>
 <body>
 
-<% flash.each do |key, value| %>
-  <%= content_tag :p, value, class: key %>
-<% end %>
-
 <%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
