@@ -2,7 +2,14 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.open
+    @items = Item.all
+
+    if user = params[:user_id]
+      @items.where! user: User.find(params[:user_id])
+    else
+      @items.where!(closed: false)
+    end
+
     if location = params[:sort].try(:[], :distance_from).presence
       @items = @items.near(location)
     else
