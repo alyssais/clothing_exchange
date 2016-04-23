@@ -2,6 +2,12 @@
 
 <h1>Listing Items</h1>
 
+<%= form_tag items_path, method: :get, enforce_utf8: false do %>
+  <%= label_tag 'sort[distance_from]', "Location" %>
+  <%= search_field_tag 'sort[distance_from]', params[:sort][:distance_from], placeholder: "Edinburgh" %>
+  <input type="Submit" value="Search">
+<% end %>
+
 <table>
   <thead>
     <tr>
