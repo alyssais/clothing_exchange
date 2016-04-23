@@ -14,6 +14,12 @@
  *= require_self
  */
 
+body {
+	background-color: white;
+	margin: 0;
+	padding: 0;
+}
+
 /*
  * Global Header and Footer (common to both)
  */
@@ -28,6 +34,40 @@
 	display: inline-block;
 	font-size: 1em;
 }
+
+.global-header,
+.main,
+.global-footer {
+	padding: .5em;
+}
+
+.global-header,
+.global-footer {
+	width: 100%;
+}
+
+.global-header {
+	background-color: #F8F8FF;
+	border-bottom: 1px solid silver;
+	padding-bottom: 0;
+}
+.global-header .nav {
+	background-color: #E6E6FA;
+	width: 100%;
+	margin-left: -.5em;
+	padding: .5em;
+}
+.global-footer {
+	background-color: #F8F8FF;
+}
+
+
+.global-header h1 {
+	font-size: 3em;
+	line-height: 1.25;
+	margin: 0 0 .5em 0;
+}
+
 
 /*
  * Global Header
