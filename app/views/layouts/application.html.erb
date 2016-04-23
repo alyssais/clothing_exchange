@@ -7,8 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+		<div class="global-header">
+			<h1>ClothingExchange</h1>
+			<ul class="nav">
+				<li class="browse">
+					<h2>Browse<span class="delimiter">:</span></h2>
+					<ul>
+						<li class="items"><%= link_to 'Items', items_path %></li>
+						<li class="locations"><%= link_to 'Locations', locations_path %></li>
+					</ul>
+				</li>
+				<li class="post">
+					<h2>Post<span class="delimiter">:</span></h2>
+					<ul>
+						<li class="new-item"><%= link_to 'New Item', new_item_path %></li>
+						<!-- li class="wanted">link_to 'Wanted', new_wanted_path </li -->
+					</ul>
+				<li>
+			</ul>
+		</div>
+	
 <%= yield %>
+
+	<div class="global-footer">
+		<h2>Site Navigation</h2>
+		<ul>
+			<li><%= link_to 'Home', root_path %></li>
+			<!-- li>About</li>
+			<li>Help</li -->
+		</ul>
+	</div>
 
 </body>
 </html>
